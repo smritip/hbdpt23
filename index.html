@@ -7,12 +7,14 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script type="text/javascript" src="render.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/mustache@latest"></script>
 </head>
 
-<body>
+<body onload="renderBody()">
 
     <div class="jumbotron">
         <h1 class="display-4">Happy Birth Month!!!! 😍🥳</h1>
@@ -24,245 +26,38 @@
     </div>
 
     <div class="container-fluid">
-        <div class="card-deck">
-            <div class="card text-white bg-dark mb-3">
+
+        <script id="unlinked-card" type="text/template">
+            <div class="{{class}}">
                 <div class="card-body">
-                    <h5 class="card-title">29</h5>
-                    <p class="card-text">💃</p>
+                    <h5 class="card-title">{{date}}</h5>
+                    <p class="card-text">{{emoji}}</p>
                 </div>
             </div>
-            <div class="card text-white bg-dark mb-3">
+        </script>
+
+        <script id="linked-card" type="text/template">
+            <a class="{{class}}" href="{{link}}">
                 <div class="card-body">
-                    <h5 class="card-title">30</h5>
-                    <p class="card-text">💃</p>
-                </div>
-            </div>
-            <div class="card text-white bg-dark mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">31</h5>
-                    <p class="card-text">💃</p>
-                </div>
-            </div>
-            <a class="card bg-light mb-3 stretched-link text-decoration-none"
-                href="https://drive.google.com/file/d/1XWjnlLTkj8od_NWweHpOLWelsU8ITCW5/view">
-                <div class="card-body">
-                    <h5 class="card-title">1</h5>
-                    <p class="card-text">🎉</p>
+                    <h5 class="card-title">{{date}}</h5>
+                    <p class="card-text">{{emoji}}</p>
                 </div>
             </a>
-            <a class="card bg-light mb-3 stretched-link text-decoration-none"
-                href="https://drive.google.com/file/d/1AI1uatcAwnWuo6cRCiCiumlUbjR_pVKj/view">
-                <div class="card-body">
-                    <h5 class="card-title">2</h5>
-                    <p class="card-text">🎉</p>
-                </div>
-            </a>
-            <a class="card bg-light mb-3 stretched-link text-decoration-none"
-                href="https://drive.google.com/file/d/1gN2tJXuXMBKr77HbwQ0ypyehnsXC_jQw/view">
-                <div class="card-body">
-                    <h5 class="card-title">3</h5>
-                    <p class="card-text">🎉</p>
-                </div>
-            </a>
-            <a class="card bg-light mb-3 stretched-link text-decoration-none"
-                href="https://drive.google.com/file/d/1bLw3Be-i92hVIqt0cqx8NGXClnn97lBv/view">
-                <div class="card-body">
-                    <h5 class="card-title">4</h5>
-                    <p class="card-text">🎉</p>
-                </div>
-            </a>
+        </script>
+
+        <div class="card-deck" id="row-0">
         </div>
-        <div class="card-deck">
-            <a class="card bg-light mb-3 stretched-link text-decoration-none"
-                href="https://drive.google.com/file/d/1pc0meqOGzuIi17R8xsnZXKLUSqCNvPvS/view">
-                <div class="card-body">
-                    <h5 class="card-title">5</h5>
-                    <p class="card-text">🎉</p>
-                </div>
-            </a>
-            <a class="card bg-light mb-3 stretched-link text-decoration-none"
-                href="https://drive.google.com/file/d/1cQk78JNqgnpaTMjZYM2T_Gu4m5XA0iKM/view">
-                <div class="card-body">
-                    <h5 class="card-title">6</h5>
-                    <p class="card-text">🎉</p>
-                </div>
-            </a>
-            <a class="card bg-light mb-3 stretched-link text-decoration-none"
-                href="https://drive.google.com/file/d/1adSIdh63b37M_YsobiEYnsudubxfCiRI/view">
-                <div class="card-body">
-                    <h5 class="card-title">7</h5>
-                    <p class="card-text">🎉</p>
-                </div>
-            </a>
-            <a class="card bg-light mb-3 stretched-link text-decoration-none"
-                href="https://drive.google.com/file/d/1e-YVqT8UA0MqcigcAn9Ae5TQDLpwv7EY/view">
-                <div class="card-body">
-                    <h5 class="card-title">8</h5>
-                    <p class="card-text">🎉</p>
-                </div>
-            </a>
-            <a class="card bg-light mb-3 stretched-link text-decoration-none"
-                href="https://drive.google.com/file/d/1e9ixyZk7N1wucJzpVe5D_jmmDJUoGXLR/view">
-                <div class="card-body">
-                    <h5 class="card-title">9</h5>
-                    <p class="card-text">🎉</p>
-                </div>
-            </a>
-            <a class="card bg-light mb-3 stretched-link text-decoration-none"
-                href="https://drive.google.com/file/d/1e8w0D0xKraX9-bXiN1etKfQForDE1_uE/view">
-                <div class="card-body">
-                    <h5 class="card-title">10</h5>
-                    <p class="card-text">🎉</p>
-                </div>
-            </a>
-            <a class="card bg-light mb-3 stretched-link text-decoration-none"
-                href="https://drive.google.com/file/d/1e6P0cDJClNYGSpRcJgYfhBgH-3QaKz2a/view">
-                <div class="card-body">
-                    <h5 class="card-title">11</h5>
-                    <p class="card-text">🎉</p>
-                </div>
-            </a>
+
+        <div class="card-deck" id="row-1">
         </div>
-        <div class="card-deck">
-            <a class="card bg-light mb-3 stretched-link text-decoration-none"
-                href="https://drive.google.com/file/d/1ndWyYrEwxHYusUE6VSSX5F9JugwSmrW8/view">
-                <div class="card-body">
-                    <h5 class="card-title">12</h5>
-                    <p class="card-text">🎉</p>
-                </div>
-            </a>
-            <a class="card bg-light mb-3 stretched-link text-decoration-none"
-                href="https://drive.google.com/file/d/1hAjQHGDj9gXNKNio2rQIXEucrdCf3BDg/view">
-                <div class="card-body">
-                    <h5 class="card-title">13</h5>
-                    <p class="card-text">🎉</p>
-                </div>
-            </a>
-            <a class="card bg-light mb-3 stretched-link text-decoration-none"
-                href="https://drive.google.com/file/d/1hqm6TQELVU3zUDQylVzmL8XI2uGqFStf/view">
-                <div class="card-body">
-                    <h5 class="card-title">14</h5>
-                    <p class="card-text">🎉</p>
-                </div>
-            </a>
-            <a class="card bg-light mb-3 stretched-link text-decoration-none"
-                href="https://drive.google.com/file/d/1eARGualCH-6EWYWNnlsxg2mr_EHyEmr4/view">
-                <div class="card-body">
-                    <h5 class="card-title">15</h5>
-                    <p class="card-text">🎉</p>
-                </div>
-            </a>
-            <a class="card bg-light mb-3 stretched-link text-decoration-none"
-                href="https://drive.google.com/file/d/1ifdzvoOHuhQcLJrDn2zi1G6TV5blCkrj/view">
-                <div class="card-body">
-                    <h5 class="card-title">16</h5>
-                    <p class="card-text">🎉</p>
-                </div>
-            </a>
-            <a class="card bg-light mb-3 stretched-link text-decoration-none"
-                href="https://drive.google.com/file/d/1jY8ZVmUSx1NgrEP35BlKqYNwixJKMgLD/view">
-                <div class="card-body">
-                    <h5 class="card-title">17</h5>
-                    <p class="card-text">🎉</p>
-                </div>
-            </a>
-            <a class="card bg-light mb-3 stretched-link text-decoration-none"
-                href="https://drive.google.com/file/d/1jiFOAK5FSmRxp0e3ze7mQ4ms7xlJwpG5/view">
-                <div class="card-body">
-                    <h5 class="card-title">18</h5>
-                    <p class="card-text">🎉</p>
-                </div>
-            </a>
+
+        <div class="card-deck" id="row-2">
         </div>
-        <div class="card-deck">
-            <a class="card bg-light mb-3 stretched-link text-decoration-none"
-                href="https://drive.google.com/file/d/1rTD_-Z8UhiXyMmydtU5Mx2A3KiYsPtXK/view">
-                <div class="card-body">
-                    <h5 class="card-title">19</h5>
-                    <p class="card-text">🎉</p>
-                </div>
-            </a>
-            <a class="card text-white bg-warning mb-3 stretched-link text-decoration-none"
-                href="https://drive.google.com/file/d/1kZ-Evcr-r7IW4hFitnV7EhixT5iuw95o/view">
-                <div class="card-body">
-                    <h5 class="card-title">20</h5>
-                    <p class="card-text">❤️</p>
-                </div>
-            </a>
-            <div class="card text-white bg-secondary mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">21</h5>
-                    <p class="card-text">🤫</p>
-                </div>
-            </div>
-            <div class="card text-white bg-secondary mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">22</h5>
-                    <p class="card-text">🤫</p>
-                </div>
-            </div>
-            <div class="card text-white bg-secondary mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">23</h5>
-                    <p class="card-text">🤫</p>
-                </div>
-            </div>
-            <div class="card text-white bg-secondary mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">24</h5>
-                    <p class="card-text">🤫</p>
-                </div>
-            </div>
-            <div class="card text-white bg-secondary mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">25</h5>
-                    <p class="card-text">🤫</p>
-                </div>
-            </div>
+
+        <div class="card-deck" id="row-3">
         </div>
-        <div class="card-deck">
-            <div class="card text-white bg-secondary mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">26</h5>
-                    <p class="card-text">🤫</p>
-                </div>
-            </div>
-            <div class="card text-white bg-secondary mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">27</h5>
-                    <p class="card-text">🤫</p>
-                </div>
-            </div>
-            <div class="card text-white bg-secondary mb-3 rainbow-box">
-                <div class="card-body">
-                    <h5 class="card-title">28</h5>
-                    <p class="card-text">🤫</p>
-                </div>
-            </div>
-            <div class="card text-white bg-secondary mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">29</h5>
-                    <p class="card-text">💃</p>
-                </div>
-            </div>
-            <div class="card text-white bg-secondary mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">30</h5>
-                    <p class="card-text">💃</p>
-                </div>
-            </div>
-            <div class="card text-white bg-dark mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">1</h5>
-                    <p class="card-text">💃</p>
-                </div>
-            </div>
-            <div class="card text-white bg-dark mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">2</h5>
-                    <p class="card-text">💃</p>
-                </div>
-            </div>
+
+        <div class="card-deck" id="row-4">
         </div>
 
     </div>
