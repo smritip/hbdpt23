@@ -81,7 +81,7 @@ function renderBody() {
         "https://drive.google.com/file/d/1o9F5CCMDGi19qbh1wxgLn5OQigeB8_lK/view",
         "https://drive.google.com/file/d/1e1lVjAcBr5Ty2HBb3aPPKJd_R17W4q8f/view",
         "https://drive.google.com/file/d/1e6OvDDW24hLJR-I-gDCQtMJXJbDVIxwx/view",
-        ""
+        "https://drive.google.com/file/d/1cHI9wEUpAHTgvOKJEUFEA0VJpDdx8FNV/view"
     ]
     var d = new Date();
     var date = d.getDate();
@@ -143,9 +143,9 @@ function renderBody() {
             }
         }
         if (date == 28) {
-            cards_row4.push(renderUnlinkedCard("card text-white bg-secondary mb-3 stretched-link text-decoration-none rainbow-box", i.toString(), "❤️"));
+            cards_row4.push(renderLinkedCard("card text-white bg-warning mb-3 stretched-link text-decoration-none rainbow-box", links[i - 1], "28", "❤️"));
         } else {
-            cards_row4.push(renderLinkedCard("card text-white bg-secondary mb-3 rainbow-box", links[i - 1], i.toString(), "🤫"));
+            cards_row4.push(renderUnlinkedCard("card text-white bg-secondary mb-3 rainbow-box", "28", "🤫"));
         }
         cards_row4.push(renderUnlinkedCard("card text-white bg-secondary mb-3", "29", "💃"));
         cards_row4.push(renderUnlinkedCard("card text-white bg-secondary mb-3", "30", "💃"));
