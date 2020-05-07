@@ -83,11 +83,12 @@ function renderBody() {
         "https://drive.google.com/file/d/1e6OvDDW24hLJR-I-gDCQtMJXJbDVIxwx/view",
         "https://drive.google.com/file/d/1cHI9wEUpAHTgvOKJEUFEA0VJpDdx8FNV/view"
     ]
-    var d = new Date();
-    var date = d.getDate();
-    var month = d.getMonth();
-    var year = d.getFullYear();
-    if (month == 3 && year == 2020) {
+    // var d = new Date();
+    // var date = d.getDate();
+    var date = 28;
+    // var month = d.getMonth();
+    // var year = d.getFullYear();
+    // if (month == 3 && year == 2020) {
         var cards_row0 = [
             renderUnlinkedCard("card text-white bg-dark mb-3 ", "29", "💃"),
             renderUnlinkedCard("card text-white bg-dark mb-3 ", "30", "💃"),
@@ -151,9 +152,9 @@ function renderBody() {
         cards_row4.push(renderUnlinkedCard("card text-white bg-secondary mb-3", "30", "💃"));
         cards_row4.push(renderUnlinkedCard("card text-white bg-dark mb-3", "1", "💃"));
         cards_row4.push(renderUnlinkedCard("card text-white bg-dark mb-3", "2", "💃"));
-    } else {
-        //TODO
-    }
+    // } else {
+    //     //TODO
+    // }
     
     document.getElementById('row-0').innerHTML = cards_row0.join();
     document.getElementById('row-1').innerHTML = cards_row1.join();
